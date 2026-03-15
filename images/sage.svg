@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <!-- Fond cercle -->
+  <circle cx="60" cy="60" r="56" fill="#f5efe0" stroke="#c9a84c" stroke-width="3"/>
+
+  <!-- Capuche / chapeau de sage -->
+  <path d="M30 55 Q60 10 90 55" fill="#8b1a1a" stroke="#6b1515" stroke-width="1.5"/>
+  <path d="M25 55 Q60 15 95 55" fill="none" stroke="#c9a84c" stroke-width="1"/>
+
+  <!-- Visage -->
+  <ellipse cx="60" cy="72" rx="28" ry="24" fill="#f0d5a8"/>
+
+  <!-- Yeux -->
+  <ellipse cx="50" cy="68" rx="4" ry="4.5" fill="#3a2e1f"/>
+  <ellipse cx="70" cy="68" rx="4" ry="4.5" fill="#3a2e1f"/>
+  <circle cx="51.5" cy="66.5" r="1.5" fill="white"/>
+  <circle cx="71.5" cy="66.5" r="1.5" fill="white"/>
+
+  <!-- Sourcils broussailleux -->
+  <path d="M43 62 Q50 58 57 62" fill="none" stroke="#6b5b4a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M63 62 Q70 58 77 62" fill="none" stroke="#6b5b4a" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Nez -->
+  <path d="M58 72 Q60 78 62 72" fill="none" stroke="#c4956a" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Sourire bienveillant -->
+  <path d="M48 82 Q60 90 72 82" fill="none" stroke="#8b6b4a" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Moustache -->
+  <path d="M48 80 Q40 76 35 78" fill="none" stroke="#b8a88a" stroke-width="2" stroke-linecap="round"/>
+  <path d="M72 80 Q80 76 85 78" fill="none" stroke="#b8a88a" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Barbe -->
+  <path d="M38 85 Q45 105 60 108 Q75 105 82 85" fill="#d4c4a8" stroke="none"/>
+  <path d="M42 90 Q50 95 55 90" fill="none" stroke="#b8a88a" stroke-width="1" opacity="0.6"/>
+  <path d="M55 92 Q62 97 70 92" fill="none" stroke="#b8a88a" stroke-width="1" opacity="0.6"/>
+  <path d="M48 98 Q56 103 65 98" fill="none" stroke="#b8a88a" stroke-width="1" opacity="0.6"/>
+
+  <!-- Étoile sur le chapeau -->
+  <polygon points="60,22 62,28 68,28 63,32 65,38 60,34 55,38 57,32 52,28 58,28" fill="#c9a84c"/>
+</svg>

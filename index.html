@@ -16,83 +16,54 @@
   </header>
 
   <main>
-    <!-- Écran d'accueil : choix du mode -->
+    <!-- Écran d'accueil -->
     <section id="ecran-accueil" class="ecran">
-      <h2>Choisis ton mode de jeu</h2>
-      <div class="modes">
-        <button class="btn-mode" data-mode="loto">
-          <span class="mode-icone">&#127922;</span>
-          <span class="mode-titre">Loto classique</span>
-          <span class="mode-desc">Une date est tirée, trouve la bonne illustration !</span>
+      <div id="zone-progression"></div>
+      <h2>Choisis ton étape</h2>
+      <div class="etapes">
+        <button class="btn-etape" id="btn-decouvrir">
+          <span class="etape-numero">1</span>
+          <span class="etape-titre">Découvrir</span>
+          <span class="etape-desc">Explore les cartes, lis les anecdotes et imprègne-toi de l'histoire.</span>
         </button>
-        <button class="btn-mode" data-mode="quiz">
-          <span class="mode-icone">&#10068;</span>
-          <span class="mode-titre">Quiz</span>
-          <span class="mode-desc">Une image apparaît, trouve la bonne date parmi 4 propositions !</span>
+        <button class="btn-etape" id="btn-associer">
+          <span class="etape-numero">2</span>
+          <span class="etape-titre">Associer</span>
+          <span class="etape-desc">Fais le lien entre les dates et les événements.</span>
         </button>
-        <button class="btn-mode" data-mode="frise">
-          <span class="mode-icone">&#128197;</span>
-          <span class="mode-titre">Frise chronologique</span>
-          <span class="mode-desc">Replace les événements dans le bon ordre !</span>
+        <button class="btn-etape" id="btn-restituer">
+          <span class="etape-numero">3</span>
+          <span class="etape-titre">Restituer</span>
+          <span class="etape-desc">Retrouve les dates de mémoire, sans aide !</span>
         </button>
       </div>
     </section>
 
-    <!-- Mode Loto -->
-    <section id="ecran-loto" class="ecran cache">
+    <!-- Étape 1 : Découvrir -->
+    <section id="ecran-decouvrir" class="ecran cache">
       <div class="jeu-header">
-        <button id="loto-retour" class="btn btn-retour">Retour</button>
-        <div class="score-zone">
-          <span id="loto-score">0</span> / <span id="loto-total">9</span> trouvées
-        </div>
+        <button class="btn btn-retour btn-retour-accueil">Retour</button>
+        <h2>Découvrir</h2>
+        <div></div>
       </div>
-
-      <div id="loto-tirage" class="tirage-zone">
-        <div class="tirage-date" id="loto-date">
-          <p class="placeholder">Clique pour tirer une date</p>
-        </div>
-        <div class="tirage-description" id="loto-description"></div>
-        <button id="loto-tirer" class="btn btn-principal">Tirer une date</button>
-      </div>
-
-      <div id="loto-plateau" class="plateau-loto"></div>
     </section>
 
-    <!-- Mode Quiz -->
-    <section id="ecran-quiz" class="ecran cache">
+    <!-- Étape 2 : Associer -->
+    <section id="ecran-associer" class="ecran cache">
       <div class="jeu-header">
-        <button id="quiz-retour" class="btn btn-retour">Retour</button>
-        <div class="score-zone">
-          Score : <span id="quiz-score">0</span> / <span id="quiz-question-num">0</span>
-        </div>
+        <button class="btn btn-retour btn-retour-accueil">Retour</button>
+        <h2>Associer</h2>
+        <div></div>
       </div>
-
-      <div id="quiz-zone" class="quiz-zone">
-        <div id="quiz-image" class="quiz-image"></div>
-        <p id="quiz-consigne" class="quiz-consigne">Quelle date correspond à cette illustration ?</p>
-        <div id="quiz-choix" class="quiz-choix"></div>
-      </div>
-
-      <div id="quiz-resultat" class="quiz-resultat cache"></div>
-      <button id="quiz-suivant" class="btn btn-principal cache">Question suivante</button>
     </section>
 
-    <!-- Mode Frise -->
-    <section id="ecran-frise" class="ecran cache">
+    <!-- Étape 3 : Restituer -->
+    <section id="ecran-restituer" class="ecran cache">
       <div class="jeu-header">
-        <button id="frise-retour" class="btn btn-retour">Retour</button>
-        <div class="score-zone">
-          <span id="frise-places">0</span> / <span id="frise-total">6</span> placés
-        </div>
+        <button class="btn btn-retour btn-retour-accueil">Retour</button>
+        <h2>Restituer</h2>
+        <div></div>
       </div>
-
-      <p class="frise-consigne">Glisse les événements sur la frise dans l'ordre chronologique, de gauche à droite.</p>
-
-      <div id="frise-timeline" class="frise-timeline"></div>
-
-      <div id="frise-reserve" class="frise-reserve"></div>
-
-      <button id="frise-valider" class="btn btn-principal cache">Valider l'ordre</button>
     </section>
 
     <!-- Écran de fin -->
@@ -103,7 +74,7 @@
         <div id="fin-details"></div>
         <div class="fin-actions">
           <button id="fin-rejouer" class="btn btn-principal">Rejouer</button>
-          <button id="fin-accueil" class="btn">Changer de mode</button>
+          <button class="btn btn-retour-accueil">Retour à l'accueil</button>
         </div>
       </div>
     </section>
