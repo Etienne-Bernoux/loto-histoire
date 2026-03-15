@@ -1,223 +1,264 @@
 /**
  * Domain - Données des cartes historiques
  * Value objects immuables représentant les événements
+ *
+ * Convention images : carte_{id sur 2 chiffres}.png
+ *   - images/avec_date/carte_01.png
+ *   - images/sans_date/carte_01.png
  */
+
+/** Génère les chemins d'image à partir de l'id */
+function images(id) {
+  const num = String(id).padStart(2, '0');
+  return {
+    image: `images/avec_date/carte_${num}.png`,
+    imageSansDate: `images/sans_date/carte_${num}.png`,
+  };
+}
+
 export const CARTES_HISTOIRE = Object.freeze([
   {
-    id: 1, titre: "52 av. J.-C.", date: -52,
-    image: "images/avec_date/carte_10.png", imageSansDate: "images/sans_date/carte_10_cleanup.png",
+    id: 1, date: -52, dateTexte: "52 av. J.-C.",
+    titre: "Siège d'Alésia",
     description: "Vercingétorix dépose les armes devant César à Alésia",
     anecdote: "Le nom Vercingétorix signifie « roi des grands guerriers ». Après sa défaite, il fut enchaîné et emmené à Rome où il resta prisonnier pendant six ans.",
     paragraphe: "En 52 avant J.-C., le jeune chef gaulois Vercingétorix rassemble les peuples de Gaule pour résister aux Romains de Jules César. Il se réfugie avec 80 000 guerriers dans la forteresse d'Alésia. César construit alors deux énormes lignes de fortifications autour de la ville pour empêcher toute sortie. Affamés, les Gaulois finissent par se rendre. Vercingétorix jette ses armes aux pieds de César.",
-    sources: ["https://www.herodote.net/ete_52_av_J_C-evenement--580000.php"]
+    sources: ["https://www.herodote.net/ete_52_av_J_C-evenement--580000.php"],
+    ...images(1),
   },
   {
-    id: 2, titre: "451", date: 451,
-    image: "images/avec_date/carte_11.png", imageSansDate: "images/sans_date/carte_11_cleanup.png",
+    id: 2, date: 451, dateTexte: "451",
+    titre: "Bataille des Champs Catalauniques",
     description: "Attila et les Huns sont repoussés aux Champs Catalauniques",
     anecdote: "Sainte Geneviève convainquit les Parisiens de ne pas fuir devant Attila. Et Attila renonça à attaquer Paris, jugeant que « le jeu n'en valait pas la chandelle » !",
     paragraphe: "En 451, un chef très puissant appelé Attila commande une immense armée de Huns venus de l'Est. Ils traversent l'Europe en conquérant tout sur leur passage. Le général romain Aétius leur barre la route près de Troyes, aux Champs Catalauniques, le 20 juin 451. Après une terrible bataille, Attila est repoussé. Il ne reviendra jamais embêter la Gaule.",
-    sources: ["https://www.herodote.net/20_juin_451-evenement-4510620.php"]
+    sources: ["https://www.herodote.net/20_juin_451-evenement-4510620.php"],
+    ...images(2),
   },
   {
-    id: 3, titre: "496", date: 496,
-    image: "images/avec_date/carte_12.png", imageSansDate: "images/sans_date/carte_12_cleanup.png",
+    id: 3, date: 496, dateTexte: "496",
+    titre: "Baptême de Clovis",
     description: "Baptême de Clovis, roi des Francs",
     anecdote: "C'est sa femme Clotilde qui a convaincu Clovis de se faire baptiser. Pendant la bataille de Tolbiac, alors qu'il était en train de perdre, il aurait prié le Dieu de Clotilde et promis de se convertir en cas de victoire !",
     paragraphe: "Clovis est le roi des Francs, un peuple germanique. Sa femme Clotilde est chrétienne et l'encourage à se faire baptiser. En 496, lors de la bataille de Tolbiac contre les Alamans, Clovis prie le Dieu des chrétiens et gagne. Il tient sa promesse : il est baptisé à Reims par l'évêque Rémi, le jour de Noël. C'est un moment important car Clovis devient le premier roi chrétien des Francs.",
-    sources: ["https://www.herodote.net/25_decembre_498-evenement-4981225.php"]
+    sources: ["https://www.herodote.net/25_decembre_498-evenement-4981225.php"],
+    ...images(3),
   },
   {
-    id: 4, titre: "732", date: 732,
-    image: "images/avec_date/carte_13.png", imageSansDate: "images/sans_date/carte_13_cleanup.png",
+    id: 4, date: 732, dateTexte: "732",
+    titre: "Bataille de Poitiers",
     description: "Charles Martel arrête les Arabes à Poitiers",
     anecdote: "Charles n'était même pas roi ! Il était « maire du palais ». Son surnom « Martel » signifie « celui qui frappe comme un marteau », à cause de sa force au combat.",
     paragraphe: "En 732, des guerriers musulmans venus d'Espagne remontent vers le nord de la France. Charles Martel, le chef des Francs, rassemble ses soldats pour les arrêter. Le 25 octobre, près de Poitiers, les deux armées s'affrontent. Les fantassins francs, bien organisés, résistent aux cavaliers. Après la mort de leur chef, les musulmans se retirent. Charles Martel a gagné !",
-    sources: ["https://www.herodote.net/25_octobre_732-evenement-7321025.php"]
+    sources: ["https://www.herodote.net/25_octobre_732-evenement-7321025.php"],
+    ...images(4),
   },
   {
-    id: 5, titre: "800", date: 800,
-    image: "images/avec_date/carte_14.png", imageSansDate: "images/sans_date/carte_14_cleanup.png",
+    id: 5, date: 800, dateTexte: "800",
+    titre: "Couronnement de Charlemagne",
     description: "Charlemagne couronné empereur d'Occident",
     anecdote: "Le couronnement a eu lieu le jour de Noël, à Rome ! Le pape a posé la couronne sur sa tête. C'était la première fois depuis 300 ans que quelqu'un portait le titre d'empereur en Occident.",
     paragraphe: "Charlemagne est le petit-fils de Charles Martel. Il est d'abord roi des Francs et conquiert un immense territoire. Le 25 décembre 800, le pape Léon III le couronne empereur à Rome. Personne n'avait porté ce titre depuis très longtemps ! Charlemagne règne sur un empire qui va de l'Espagne à l'Allemagne. Il crée aussi des écoles pour que les enfants apprennent à lire et à écrire.",
-    sources: ["https://www.herodote.net/25_decembre_800-evenement-8001225.php"]
+    sources: ["https://www.herodote.net/25_decembre_800-evenement-8001225.php"],
+    ...images(5),
   },
   {
-    id: 6, titre: "843", date: 843,
-    image: "images/avec_date/carte_15.png", imageSansDate: "images/sans_date/carte_15_cleanup.png",
+    id: 6, date: 843, dateTexte: "843",
+    titre: "Traité de Verdun",
     description: "Traité de Verdun : partage de l'Empire carolingien",
     anecdote: "Les trois frères se disputaient tellement qu'ils ont fini par couper l'empire en trois parts, comme un gâteau ! C'est de ce partage que naîtront la France et l'Allemagne.",
     paragraphe: "Après la mort de Charlemagne, son fils Louis le Pieux hérite de l'empire. Mais à la mort de Louis, ses trois fils se disputent le pouvoir. En 843, ils signent le traité de Verdun pour se partager l'empire en trois royaumes. Charles le Chauve reçoit l'ouest (la future France), Louis le Germanique reçoit l'est (la future Allemagne), et Lothaire garde le milieu avec le titre d'empereur.",
-    sources: ["https://www.herodote.net/Du_traite_de_Verdun_au_traite_de_Mersen-article-265.php"]
+    sources: ["https://www.herodote.net/Du_traite_de_Verdun_au_traite_de_Mersen-article-265.php"],
+    ...images(6),
   },
   {
-    id: 7, titre: "885", date: 885,
-    image: "images/avec_date/carte_16.png", imageSansDate: "images/sans_date/carte_16_cleanup.png",
+    id: 7, date: 885, dateTexte: "885",
+    titre: "Siège de Paris",
     description: "Siège de Paris par les Vikings",
     anecdote: "700 bateaux et environ 30 000 guerriers vikings se sont présentés devant Paris ! L'évêque Gozlin et le comte Eudes ont défendu la ville avec courage pendant plus d'un an.",
     paragraphe: "Le 24 novembre 885, des milliers de guerriers vikings arrivent devant Paris avec 700 bateaux. Ils veulent remonter la Seine pour piller les terres plus au sud. L'évêque Gozlin et le comte Eudes refusent de les laisser passer. Les Parisiens se défendent avec courage pendant plus d'un an. Finalement, l'empereur Charles le Gros paie les Vikings pour qu'ils s'en aillent.",
-    sources: ["https://www.herodote.net/Les_Vikings_a_la_conquete_du_monde_VIIIe_XIe_siecles_-synthese-3161-588.php"]
+    sources: ["https://www.herodote.net/Les_Vikings_a_la_conquete_du_monde_VIIIe_XIe_siecles_-synthese-3161-588.php"],
+    ...images(7),
   },
   {
-    id: 8, titre: "911", date: 911,
-    image: "images/avec_date/carte_17.png", imageSansDate: "images/sans_date/carte_17_cleanup.png",
+    id: 8, date: 911, dateTexte: "911",
+    titre: "Traité de Saint-Clair-sur-Epte",
     description: "Traité de Saint-Clair-sur-Epte : la Normandie aux Vikings",
     anecdote: "Le roi a donné des terres aux Vikings pour avoir la paix ! En échange, leur chef Rollon a accepté de se faire baptiser et de protéger le royaume contre les autres Vikings.",
     paragraphe: "En 911, le roi Charles III le Simple décide de négocier avec Rollon, un chef viking. Ils se rencontrent à Saint-Clair-sur-Epte, un petit village. Le roi donne à Rollon la basse vallée de la Seine, à condition qu'il protège ce territoire contre les autres Vikings. Rollon accepte et se fait baptiser. C'est ainsi que naît la Normandie, la « terre des Normands » (les hommes du Nord).",
-    sources: ["https://www.herodote.net/Le_traite_de_Saint_Clair_sur_Epte-synthese-634.php"]
+    sources: ["https://www.herodote.net/Le_traite_de_Saint_Clair_sur_Epte-synthese-634.php"],
+    ...images(8),
   },
   {
-    id: 9, titre: "1066", date: 1066,
-    image: "images/avec_date/carte_18.png", imageSansDate: "images/sans_date/carte_18_cleanup.png",
+    id: 9, date: 1066, dateTexte: "1066",
+    titre: "Conquête de l'Angleterre",
     description: "Guillaume le Conquérant envahit l'Angleterre",
     anecdote: "Guillaume était surnommé « le Bâtard » car sa mère était la fille d'un simple tanneur de Falaise. Après sa victoire, il fut couronné roi d'Angleterre le jour de Noël 1066 !",
     paragraphe: "Guillaume est le duc de Normandie. Il pense avoir droit au trône d'Angleterre. En 1066, il traverse la Manche avec une armée de 4 000 à 6 000 hommes. Le 14 octobre, à la bataille d'Hastings, il écrase les troupes du roi anglais Harold. Guillaume est couronné roi d'Angleterre à Westminster le jour de Noël. Les Normands apportent le français en Angleterre, c'est pourquoi beaucoup de mots anglais ressemblent au français.",
-    sources: ["https://www.herodote.net/14_octobre_1066-evenement-10661014.php"]
+    sources: ["https://www.herodote.net/14_octobre_1066-evenement-10661014.php"],
+    ...images(9),
   },
   {
-    id: 10, titre: "1099", date: 1099,
-    image: "images/avec_date/carte_01.png", imageSansDate: "images/sans_date/carte_01_cleanup.png",
+    id: 10, date: 1099, dateTexte: "1099",
+    titre: "Prise de Jérusalem",
     description: "Première croisade : prise de Jérusalem",
     anecdote: "Sur les 150 000 croisés partis d'Europe, moins d'un sur dix arriva jusqu'à Jérusalem ! Le voyage dura trois ans à travers des terres inconnues.",
     paragraphe: "En 1095, le pape appelle les chrétiens d'Europe à partir libérer Jérusalem, ville sainte occupée par les musulmans. Des milliers de chevaliers et de pèlerins se mettent en route. Le voyage est très long et dangereux. Le 15 juillet 1099, après un siège de plusieurs semaines, les croisés réussissent à entrer dans Jérusalem. Ils créent ensuite des royaumes chrétiens en Terre sainte.",
-    sources: ["https://www.herodote.net/15_juillet_1099-evenement-10990715.php"]
+    sources: ["https://www.herodote.net/15_juillet_1099-evenement-10990715.php"],
+    ...images(10),
   },
   {
-    id: 11, titre: "1214", date: 1214,
-    image: "images/avec_date/carte_02.png", imageSansDate: "images/sans_date/carte_02_cleanup.png",
+    id: 11, date: 1214, dateTexte: "1214",
+    titre: "Bataille de Bouvines",
     description: "Bataille de Bouvines, victoire de Philippe Auguste",
     anecdote: "Pour la première fois, des chevaliers et des milices de simples citoyens combattirent ensemble sous le drapeau du roi, avec la fleur de lys. C'est la naissance du sentiment national français !",
     paragraphe: "Le 27 juillet 1214, le roi Philippe Auguste affronte une coalition d'ennemis : le roi d'Angleterre, l'empereur d'Allemagne et les comtes de Flandre. Ils sont 80 000 contre seulement 25 000 Français. Malgré leur infériorité, les Français remportent une victoire éclatante à Bouvines. Pour la première fois, chevaliers et gens du peuple combattent ensemble sous la bannière royale.",
-    sources: ["https://www.herodote.net/27_juillet_1214-evenement-12140727.php"]
+    sources: ["https://www.herodote.net/27_juillet_1214-evenement-12140727.php"],
+    ...images(11),
   },
   {
-    id: 12, titre: "1226", date: 1226,
-    image: "images/avec_date/carte_03.png", imageSansDate: "images/sans_date/carte_03_cleanup.png",
+    id: 12, date: 1226, dateTexte: "1226",
+    titre: "Avènement de Saint Louis",
     description: "Avènement de Saint Louis (Louis IX)",
     anecdote: "Louis IX n'avait que 12 ans quand il est devenu roi ! C'est sa mère, Blanche de Castille, qui a gouverné à sa place en attendant qu'il grandisse.",
     paragraphe: "Le 8 novembre 1226, le roi Louis VIII meurt. Son fils Louis IX, le petit-fils de Philippe Auguste, n'a que 12 ans. C'est sa mère, Blanche de Castille, qui dirige le royaume en attendant qu'il soit grand. Louis IX sera un roi très pieux, connu pour rendre la justice sous un chêne. Il sera plus tard déclaré saint par l'Église. On le connaît sous le nom de Saint Louis.",
-    sources: ["https://www.herodote.net/8_novembre_1226-evenement-12261108.php"]
+    sources: ["https://www.herodote.net/8_novembre_1226-evenement-12261108.php"],
+    ...images(12),
   },
   {
-    id: 13, titre: "1302", date: 1302,
-    image: "images/avec_date/carte_04.png", imageSansDate: "images/sans_date/carte_04_cleanup.png",
+    id: 13, date: 1302, dateTexte: "1302",
+    titre: "Premiers États généraux",
     description: "Premiers États généraux convoqués par Philippe le Bel",
     anecdote: "C'est la toute première fois que le roi demande l'avis de ses sujets ! Nobles, religieux et bourgeois se sont réunis dans la cathédrale Notre-Dame de Paris.",
     paragraphe: "En 1302, le roi Philippe le Bel a besoin d'argent et de soutien dans son conflit avec le pape. Il a alors une idée : réunir des représentants de tout son royaume. Le 10 avril, nobles, membres du clergé et bourgeois se rassemblent sous les voûtes de Notre-Dame de Paris. Ce sont les premiers « États généraux » de l'histoire de France, les ancêtres lointains de notre Parlement actuel.",
-    sources: ["https://www.herodote.net/Un_roi_administrateur-synthese-91.php"]
+    sources: ["https://www.herodote.net/Un_roi_administrateur-synthese-91.php"],
+    ...images(13),
   },
   {
-    id: 14, titre: "1346", date: 1346,
-    image: "images/avec_date/carte_05.png", imageSansDate: "images/sans_date/carte_05_cleanup.png",
+    id: 14, date: 1346, dateTexte: "1346",
+    titre: "Bataille de Crécy",
     description: "Bataille de Crécy, début de la guerre de Cent Ans",
     anecdote: "Le prince anglais qui commandait l'armée n'avait que 15 ans ! On l'appellera plus tard le « Prince Noir ». Les archers anglais et leur arc long ont écrasé les chevaliers français.",
     paragraphe: "La guerre de Cent Ans oppose la France et l'Angleterre. Le 26 août 1346, les deux armées s'affrontent à Crécy. Les Anglais utilisent une arme redoutable : l'arc long, qui tire des flèches très vite et très loin. Les chevaliers français, en armure lourde, sont battus par une pluie de flèches. C'est une grande défaite pour la France, qui marque le début d'un long conflit.",
-    sources: ["https://www.herodote.net/26_aout_1346-evenement-13460826.php"]
+    sources: ["https://www.herodote.net/26_aout_1346-evenement-13460826.php"],
+    ...images(14),
   },
   {
-    id: 15, titre: "1429", date: 1429,
-    image: "images/avec_date/carte_06.png", imageSansDate: "images/sans_date/carte_06_cleanup.png",
+    id: 15, date: 1429, dateTexte: "1429",
+    titre: "Jeanne d'Arc délivre Orléans",
     description: "Jeanne d'Arc délivre Orléans",
     anecdote: "Jeanne n'avait que 17 ans quand elle a rencontré le roi ! Elle disait entendre des voix de saints qui lui ordonnaient de sauver la France.",
     paragraphe: "En 1429, la France est en grande difficulté face aux Anglais. Jeanne d'Arc, une jeune paysanne de 17 ans, affirme entendre des voix qui lui disent de sauver la France. Elle convainc le roi Charles VII de lui confier une armée. Le 8 mai 1429, elle libère la ville d'Orléans assiégée par les Anglais. C'est un tournant de la guerre de Cent Ans. Jeanne est surnommée la « Pucelle d'Orléans ».",
-    sources: ["https://www.herodote.net/8_mai_1429-evenement-14290508.php"]
+    sources: ["https://www.herodote.net/8_mai_1429-evenement-14290508.php"],
+    ...images(15),
   },
   {
-    id: 16, titre: "1431", date: 1431,
-    image: "images/avec_date/carte_07.png", imageSansDate: "images/sans_date/carte_07_cleanup.png",
+    id: 16, date: 1431, dateTexte: "1431",
+    titre: "Bûcher de Jeanne d'Arc",
     description: "Jeanne d'Arc est brûlée à Rouen",
     anecdote: "Jeanne a été capturée par les Bourguignons puis vendue aux Anglais. Elle a été jugée pour sorcellerie, un procès complètement injuste. Vingt-cinq ans plus tard, un nouveau procès l'a déclarée innocente.",
     paragraphe: "Après ses victoires, Jeanne d'Arc est capturée à Compiègne en 1430. Les Bourguignons la vendent aux Anglais. Un tribunal religieux la juge à Rouen et l'accuse injustement de sorcellerie. Le 30 mai 1431, Jeanne est brûlée sur la place du Vieux-Marché à Rouen. Elle n'a que 19 ans. En 1456, un nouveau procès reconnaîtra son innocence. Elle sera déclarée sainte en 1920.",
-    sources: ["https://www.herodote.net/30_mai_1431-evenement-14310530.php"]
+    sources: ["https://www.herodote.net/30_mai_1431-evenement-14310530.php"],
+    ...images(16),
   },
   {
-    id: 17, titre: "1515", date: 1515,
-    image: "images/avec_date/carte_08.png", imageSansDate: "images/sans_date/carte_08_cleanup.png",
+    id: 17, date: 1515, dateTexte: "1515",
+    titre: "Bataille de Marignan",
     description: "François Iᵉʳ victorieux à Marignan",
     anecdote: "François Iᵉʳ fêtait ses 21 ans la veille de la bataille ! Il ne régnait que depuis huit mois. Pour traverser les Alpes avec son armée, il a emprunté un col de montagne si étroit que les canons devaient passer un par un.",
     paragraphe: "En 1515, le jeune roi François Iᵉʳ veut conquérir le nord de l'Italie. Il franchit les Alpes avec 60 000 hommes et ses canons. Le 13 septembre, il affronte les redoutables soldats suisses dans la plaine de Marignan, près de Milan. La bataille dure deux jours et fait 16 000 morts. François Iᵉʳ gagne et devient duc de Milan. C'est la date la plus célèbre de l'histoire de France !",
-    sources: ["https://www.herodote.net/13_septembre_1515-evenement-15150913.php"]
+    sources: ["https://www.herodote.net/13_septembre_1515-evenement-15150913.php"],
+    ...images(17),
   },
   {
-    id: 18, titre: "1559", date: 1559,
-    image: "images/avec_date/carte_09.png", imageSansDate: "images/sans_date/carte_09_cleanup.png",
+    id: 18, date: 1559, dateTexte: "1559",
+    titre: "Traité du Cateau-Cambrésis",
     description: "Traité du Cateau-Cambrésis, les Trois-Évêchés deviennent français",
     anecdote: "Pour fêter la paix, le roi Henri II organisa un grand tournoi. Mais un éclat de lance le blessa à l'œil et il mourut quelques jours plus tard. La fête s'est transformée en drame !",
     paragraphe: "Depuis des dizaines d'années, la France et l'Espagne se font la guerre en Italie. Le 3 avril 1559, le roi Henri II et le roi d'Espagne Philippe II signent la paix au Cateau-Cambrésis. La France obtient Metz, Toul et Verdun (les Trois-Évêchés) et Calais. Pour célébrer la paix, on organise un mariage royal et des fêtes à Paris, mais le roi Henri II meurt dans un accident de tournoi.",
-    sources: ["https://www.herodote.net/3_avril_1559-evenement-15590403.php"]
+    sources: ["https://www.herodote.net/3_avril_1559-evenement-15590403.php"],
+    ...images(18),
   },
   {
-    id: 19, titre: "1572", date: 1572,
-    image: "images/avec_date/carte_19.png", imageSansDate: "images/sans_date/carte_19_cleanup.png",
+    id: 19, date: 1572, dateTexte: "1572",
+    titre: "Massacre de la Saint-Barthélemy",
     description: "Massacre de la Saint-Barthélemy",
     anecdote: "Tout a commencé lors d'un mariage qui devait réconcilier catholiques et protestants : celui du futur Henri IV avec Marguerite de Valois, la fameuse « reine Margot ».",
     paragraphe: "Au XVIe siècle, les catholiques et les protestants se font la guerre en France. Le 18 août 1572, un grand mariage est organisé à Paris pour faire la paix : celui d'Henri de Navarre (protestant) et de Marguerite de Valois (catholique). Mais le 24 août, jour de la Saint-Barthélemy, les cloches sonnent le signal d'un terrible massacre de protestants dans Paris. Des milliers de personnes sont tuées.",
-    sources: ["https://www.herodote.net/24_aout_1572-evenement-15720824.php"]
+    sources: ["https://www.herodote.net/24_aout_1572-evenement-15720824.php"],
+    ...images(19),
   },
   {
-    id: 20, titre: "1598", date: 1598,
-    image: "images/avec_date/carte_20.png", imageSansDate: "images/sans_date/carte_20_cleanup.png",
+    id: 20, date: 1598, dateTexte: "1598",
+    titre: "Édit de Nantes",
     description: "Édit de Nantes : tolérance et liberté de culte",
     anecdote: "Henri IV a changé de religion six fois dans sa vie ! On lui prête la phrase célèbre « Paris vaut bien une messe », quand il s'est converti au catholicisme pour devenir roi.",
     paragraphe: "Après des années de guerres de religion entre catholiques et protestants, le roi Henri IV signe l'édit de Nantes le 30 avril 1598. Ce texte très important autorise les protestants à pratiquer leur religion librement. C'est la première fois en Europe qu'un roi accepte officiellement que deux religions coexistent dans son royaume. Henri IV veut « la paix et le repos » pour tous les Français.",
-    sources: ["https://www.herodote.net/30_avril_1598-evenement-15980430.php"]
+    sources: ["https://www.herodote.net/30_avril_1598-evenement-15980430.php"],
+    ...images(20),
   },
   {
-    id: 21, titre: "1610", date: 1610,
-    image: "images/avec_date/carte_21.png", imageSansDate: "images/sans_date/carte_21_cleanup.png",
+    id: 21, date: 1610, dateTexte: "1610",
+    titre: "Assassinat d'Henri IV",
     description: "Assassinat d'Henri IV par Ravaillac",
     anecdote: "Henri IV a été tué à cause d'un embouteillage ! Son carrosse était bloqué dans une rue étroite de Paris quand Ravaillac a grimpé sur la roue et l'a poignardé.",
     paragraphe: "Le 14 mai 1610, le roi Henri IV est dans son carrosse à Paris. La rue est encombrée et la voiture ne peut plus avancer. Un homme appelé Ravaillac en profite pour monter sur la roue du carrosse et poignarder le roi. Henri IV meurt sur le coup. Ravaillac le considérait comme un mauvais roi car il protégeait les protestants. C'est un événement très triste car Henri IV était un roi aimé du peuple.",
-    sources: ["https://www.herodote.net/14_mai_1610-evenement-16100514.php"]
+    sources: ["https://www.herodote.net/14_mai_1610-evenement-16100514.php"],
+    ...images(21),
   },
   {
-    id: 22, titre: "1648", date: 1648,
-    image: "images/avec_date/carte_22.png", imageSansDate: "images/sans_date/carte_22_cleanup.png",
+    id: 22, date: 1648, dateTexte: "1648",
+    titre: "Traités de Westphalie",
     description: "Traités de Westphalie, fin de la guerre de Trente Ans",
     anecdote: "La guerre de Trente Ans a duré exactement 30 ans et a détruit une grande partie de l'Allemagne. Certaines régions ont perdu plus de la moitié de leur population !",
     paragraphe: "Depuis 1618, une terrible guerre ravage l'Europe, surtout l'Allemagne. Le 24 octobre 1648, deux traités de paix sont signés en Westphalie. La France, grâce au cardinal Mazarin, est l'une des grandes gagnantes. Elle récupère des territoires en Alsace. L'Allemagne est laissée divisée en plus de 350 petits États. Ces traités sont très importants car ils créent les bases de l'Europe moderne.",
-    sources: ["https://www.herodote.net/24_octobre_1648-evenement-16481024.php"]
+    sources: ["https://www.herodote.net/24_octobre_1648-evenement-16481024.php"],
+    ...images(22),
   },
   {
-    id: 23, titre: "1659", date: 1659,
-    image: "images/avec_date/carte_23.png", imageSansDate: "images/sans_date/carte_23_cleanup.png",
+    id: 23, date: 1659, dateTexte: "1659",
+    titre: "Traité des Pyrénées",
     description: "Traité des Pyrénées entre la France et l'Espagne",
     anecdote: "Le traité a été signé sur une petite île au milieu d'une rivière, à la frontière entre la France et l'Espagne ! Ni l'un ni l'autre ne voulait mettre le pied chez le voisin.",
     paragraphe: "Depuis 1635, la France et l'Espagne sont en guerre. Le 7 novembre 1659, le cardinal Mazarin négocie la paix pour le jeune roi Louis XIV. Le traité est signé sur l'île des Faisans, au milieu de la rivière Bidassoa, à la frontière des deux pays. La France obtient le Roussillon et l'Artois. Le traité prévoit aussi le mariage de Louis XIV avec la princesse espagnole Marie-Thérèse.",
-    sources: ["https://www.herodote.net/7_novembre_1659-evenement-16591107.php"]
+    sources: ["https://www.herodote.net/7_novembre_1659-evenement-16591107.php"],
+    ...images(23),
   },
   {
-    id: 24, titre: "1678", date: 1678,
-    image: "images/avec_date/carte_24.png", imageSansDate: "images/sans_date/carte_24_cleanup.png",
+    id: 24, date: 1678, dateTexte: "1678",
+    titre: "Traité de Nimègue",
     description: "Traité de Nimègue, apogée du règne de Louis XIV",
     anecdote: "Après ce traité, Louis XIV reçut le surnom de « Louis le Grand ». C'est à cette époque qu'il était le roi le plus puissant d'Europe !",
     paragraphe: "Louis XIV, le Roi-Soleil, fait la guerre aux Hollandais et à leurs alliés. En 1678, la paix est signée à Nimègue, en Hollande. La France obtient la Franche-Comté et plusieurs villes en Flandre comme Valenciennes et Cambrai. C'est le sommet de la puissance de Louis XIV. Il est le roi le plus respecté et le plus craint d'Europe. On lui donne le titre de « Louis le Grand ».",
-    sources: ["https://www.herodote.net/5_fevrier_1679-evenement-16790205.php"]
+    sources: ["https://www.herodote.net/5_fevrier_1679-evenement-16790205.php"],
+    ...images(24),
   },
   {
-    id: 25, titre: "1715", date: 1715,
-    image: "images/avec_date/carte_25.png", imageSansDate: "images/sans_date/carte_25_cleanup.png",
+    id: 25, date: 1715, dateTexte: "1715",
+    titre: "Mort de Louis XIV",
     description: "Mort de Louis XIV après 72 ans de règne",
     anecdote: "Louis XIV est devenu roi à seulement 4 ans ! Avec 72 ans de règne, personne au monde n'a régné aussi longtemps. Avant de mourir, il a dit à son arrière-petit-fils : « J'ai trop aimé la guerre. »",
     paragraphe: "Le 1er septembre 1715, Louis XIV meurt à Versailles à 76 ans. Il a régné pendant 72 ans, un record ! Devenu roi à 4 ans, il a construit le château de Versailles, le plus grand palais d'Europe. Mais ses nombreuses guerres ont épuisé le pays. Son successeur, Louis XV, n'a que 5 ans. C'est le neveu du roi, le duc d'Orléans, qui gouverne en attendant qu'il grandisse.",
-    sources: ["https://www.herodote.net/1er_septembre_1715-evenement-17150901.php"]
+    sources: ["https://www.herodote.net/1er_septembre_1715-evenement-17150901.php"],
+    ...images(25),
   },
   {
-    id: 26, titre: "1763", date: 1763,
-    image: "images/avec_date/carte_26.png", imageSansDate: "images/sans_date/carte_26_cleanup.png",
+    id: 26, date: 1763, dateTexte: "1763",
+    titre: "Traité de Paris",
     description: "Traité de Paris : la France perd le Canada et l'Inde",
     anecdote: "La guerre de Sept Ans est parfois considérée comme la première « guerre mondiale » car elle s'est déroulée en Europe, en Amérique, en Afrique et en Inde en même temps !",
     paragraphe: "Après la guerre de Sept Ans contre l'Angleterre, la France signe le traité de Paris le 10 février 1763. C'est une grande défaite : la France perd la Nouvelle-France (le Canada) et presque tous ses territoires en Inde. Elle ne garde que quelques petits comptoirs. C'est la fin du premier empire colonial français. L'Angleterre devient la plus grande puissance coloniale du monde.",
-    sources: ["https://www.herodote.net/10_fevrier_1763-evenement-17630210.php"]
+    sources: ["https://www.herodote.net/10_fevrier_1763-evenement-17630210.php"],
+    ...images(26),
   },
   {
-    id: 27, titre: "1789", date: 1789,
-    image: "images/avec_date/carte_27.png", imageSansDate: "images/sans_date/carte_27_cleanup.png",
+    id: 27, date: 1789, dateTexte: "1789",
+    titre: "Prise de la Bastille",
     description: "Révolution française, prise de la Bastille",
     anecdote: "La Bastille était une prison, mais le jour de sa prise, il n'y avait que 7 prisonniers à l'intérieur ! Les Parisiens y cherchaient surtout de la poudre et des armes.",
     paragraphe: "Le 14 juillet 1789, les Parisiens sont en colère. Le roi Louis XVI a renvoyé son ministre Necker et des troupes entourent Paris. Le peuple s'arme aux Invalides puis se dirige vers la Bastille, une forteresse-prison qui symbolise le pouvoir royal. Après des combats, la garnison se rend. C'est le début de la Révolution française, qui va changer la France pour toujours.",
-    sources: ["https://www.herodote.net/14_juillet_1789-evenement-17890714.php"]
+    sources: ["https://www.herodote.net/14_juillet_1789-evenement-17890714.php"],
+    ...images(27),
   },
 ]);
 

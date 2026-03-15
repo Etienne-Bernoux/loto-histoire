@@ -72,8 +72,8 @@ function genererChoixDates(carteCorrecte, toutesLesCartes) {
   const autres = toutesLesCartes.filter(c => c.id !== carteCorrecte.id);
   const fausses = melanger(autres).slice(0, 3);
   return melanger([
-    { id: carteCorrecte.id, label: carteCorrecte.titre },
-    ...fausses.map(c => ({ id: c.id, label: c.titre })),
+    { id: carteCorrecte.id, label: carteCorrecte.dateTexte },
+    ...fausses.map(c => ({ id: c.id, label: c.dateTexte })),
   ]);
 }
 

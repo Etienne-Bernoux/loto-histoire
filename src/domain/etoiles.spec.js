@@ -3,9 +3,9 @@ import { calculerEtoiles, totalEtoiles, maxEtoiles } from './etoiles.js';
 import { etatProgressionVide } from './persistence.js';
 
 const CARTES_TEST = [
-  { id: 1, titre: '1515', date: 1515 },
-  { id: 2, titre: '1789', date: 1789 },
-  { id: 3, titre: '-52', date: -52 },
+  { id: 1, dateTexte: '1515', date: 1515 },
+  { id: 2, dateTexte: '1789', date: 1789 },
+  { id: 3, dateTexte: '-52', date: -52 },
 ];
 
 describe('calculerEtoiles', () => {

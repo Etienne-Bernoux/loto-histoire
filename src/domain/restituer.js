@@ -44,7 +44,7 @@ export function verifierSaisie(session, saisie, toutesLesCartes) {
   return {
     correct,
     dateAttendue: attendu,
-    titreAttendu: carte.titre,
+    titreAttendu: carte.dateTexte,
     carte,
     termine: session.index >= session.cartesIds.length,
   };

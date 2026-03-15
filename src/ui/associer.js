@@ -51,7 +51,7 @@ function afficherQuestion() {
     consigne = `<p class="quiz-consigne">${carte.description}</p><p class="quiz-consigne"><strong>Quelle est la date ?</strong></p>`;
   } else {
     imageHtml = '';
-    consigne = `<p class="quiz-consigne" style="font-size:1.8rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--couleur-accent);margin:1rem 0">${carte.titre}</p><p class="quiz-consigne"><strong>Quel événement correspond ?</strong></p>`;
+    consigne = `<p class="quiz-date-affichee">${carte.dateTexte}</p><p class="quiz-consigne"><strong>Quel événement correspond ?</strong></p>`;
   }
 
   // Zone de jeu (on réutilise la structure après le jeu-header)
@@ -128,14 +128,12 @@ function onReponse(choixId, carteQuestion, contenu) {
     resultatEl.textContent = 'Bravo ! Bonne réponse !';
   } else {
     resultatEl.classList.add('echec');
-    resultatEl.textContent = `Non, c'était : ${resultat.bonneReponse.titre} — ${resultat.bonneReponse.description}`;
+    resultatEl.textContent = `Non, c'était : ${resultat.bonneReponse.dateTexte} — ${resultat.bonneReponse.titre}`;
   }
 
   const btnSuivant = contenu.querySelector('#associer-suivant');
   btnSuivant.classList.remove('cache');
-  btnSuivant.style.display = 'block';
-  btnSuivant.style.margin = '1rem auto';
-  btnSuivant.addEventListener('click', afficherQuestion);
+  btnSuivant.onclick = afficherQuestion;
 }
 
 /** Termine la session et affiche le score */

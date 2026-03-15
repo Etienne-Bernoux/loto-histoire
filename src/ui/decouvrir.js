@@ -32,7 +32,8 @@ export function initialiserDecouvrir(ecran, ludique) {
     el.className = 'decouvrir-vignette';
     el.innerHTML = `
       <img src="${carte.image}" alt="${carte.description}">
-      <span class="vignette-titre">${carte.titre}</span>
+      <span class="vignette-titre">${carte.dateTexte}</span>
+      <span class="vignette-nom">${carte.titre}</span>
     `;
     el.addEventListener('click', () => afficherDetail(carte.id));
     grille.appendChild(el);
@@ -56,6 +57,9 @@ function afficherDetail(carteId) {
   renderDetail(carte);
   conteneurGrille.classList.add('cache');
   conteneurDetail.classList.remove('cache');
+  // Cacher le jeu-header pour éviter le double bouton retour
+  const header = conteneurGrille.closest('.ecran')?.querySelector('.jeu-header');
+  if (header) header.classList.add('cache');
 }
 
 /** Rend le contenu détaillé d'une carte */
@@ -71,13 +75,6 @@ function renderDetail(carte) {
     ? `<p class="detail-paragraphe">${carte.paragraphe}</p>`
     : '';
 
-  const sourcesHtml = carte.sources?.length
-    ? `<div class="detail-sources">
-        <strong>Sources :</strong>
-        <ul>${carte.sources.map(s => `<li><a href="${s}" target="_blank" rel="noopener">${s}</a></li>`).join('')}</ul>
-      </div>`
-    : '';
-
   conteneurDetail.innerHTML = `
     <div class="detail-nav">
       <button class="btn btn-retour" id="detail-retour-grille">Retour</button>
@@ -91,10 +88,10 @@ function renderDetail(carte) {
       <div class="detail-image">
         <img src="${carte.image}" alt="${carte.description}">
       </div>
-      <h2>${carte.titre} — ${carte.description}</h2>
+      <h2>${carte.dateTexte} — ${carte.titre}</h2>
+      <p class="detail-description">${carte.description}</p>
       ${anecdoteHtml}
       ${paragrapheHtml}
-      ${sourcesHtml}
     </div>
   `;
 
@@ -119,4 +116,7 @@ function naviguer(direction) {
 function retourGrille() {
   conteneurDetail.classList.add('cache');
   conteneurGrille.classList.remove('cache');
+  // Réafficher le jeu-header
+  const header = conteneurGrille.closest('.ecran')?.querySelector('.jeu-header');
+  if (header) header.classList.remove('cache');
 }

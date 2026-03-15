@@ -19,8 +19,8 @@ function creerFakeStorage() {
 }
 
 const CARTES_TEST = [
-  { id: 1, titre: '1515', date: 1515 },
-  { id: 2, titre: '1789', date: 1789 },
+  { id: 1, dateTexte: '1515', date: 1515 },
+  { id: 2, dateTexte: '1789', date: 1789 },
 ];
 
 describe('etatProgressionVide', () => {

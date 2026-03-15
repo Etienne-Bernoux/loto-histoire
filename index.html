@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Loto d'Histoire</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%238b1a1a'/><text x='16' y='23' font-size='18' text-anchor='middle' fill='%23f5efe0' font-family='serif' font-weight='bold'>H</text></svg>">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,7 +19,18 @@
   <main>
     <!-- Écran d'accueil -->
     <section id="ecran-accueil" class="ecran">
+      <!-- Maestro + message d'accueil -->
+      <div id="zone-maestro" class="accueil-maestro"></div>
+
+      <!-- Stats rapides -->
+      <div id="zone-stats" class="accueil-stats"></div>
+
+      <!-- Défi du jour -->
+      <div id="zone-defi" class="accueil-defi"></div>
+
+      <!-- Progression -->
       <div id="zone-progression"></div>
+
       <h2>Choisis ton étape</h2>
       <div class="etapes">
         <button class="btn-etape" id="btn-decouvrir">

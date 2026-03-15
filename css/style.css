@@ -116,18 +116,130 @@ h2 {
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--couleur-accent);
+  text-align: center;
+  margin-bottom: 0.75rem;
 }
 
-.placeholder-text {
+/* === Date affichée dans le mode date→événement === */
+.quiz-date-affichee {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--couleur-accent);
   text-align: center;
-  font-style: italic;
-  color: #9a8b78;
-  padding: 3rem 1rem;
+  margin: 1rem 0;
+  background: var(--couleur-parchemin);
+  border: 3px solid var(--couleur-or);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+}
+
+/* === Bouton suivant centré === */
+#associer-suivant,
+#saisie-suivant {
+  display: block;
+  margin: 1rem auto;
 }
 
 /* ============================== */
 /* === ÉCRAN D'ACCUEIL ========== */
 /* ============================== */
+
+/* Maestro message d'accueil — pas de bloc, juste inline */
+.accueil-maestro {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.accueil-maestro-img {
+  flex-shrink: 0;
+}
+
+.accueil-maestro-bulle {
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--couleur-texte);
+  line-height: 1.4;
+}
+
+/* Stats rapides */
+.accueil-stats {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.accueil-stat {
+  flex: 1;
+  text-align: center;
+  padding: 0.5rem 0.3rem;
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 10px;
+}
+
+.stat-valeur {
+  display: block;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: var(--couleur-accent);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.65rem;
+  color: #6b5b4a;
+  margin-top: 0.1rem;
+}
+
+/* Défi du jour */
+.accueil-defi {
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-or);
+  border-radius: 12px;
+  text-align: center;
+}
+
+.defi-titre {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  color: var(--couleur-accent);
+  margin-bottom: 0.5rem;
+}
+
+.defi-cartes {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
+.defi-carte {
+  width: 55px;
+  text-align: center;
+}
+
+.defi-carte img {
+  width: 100%;
+  aspect-ratio: 800 / 530;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--couleur-bordure);
+}
+
+.defi-carte span {
+  display: block;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: var(--couleur-accent);
+  margin-top: 0.15rem;
+}
 
 .etapes {
   display: flex;
@@ -220,11 +332,23 @@ h2 {
 
 .vignette-titre {
   display: block;
-  padding: 0.3rem;
-  font-size: 0.7rem;
-  font-weight: 600;
+  padding: 0.2rem 0.3rem 0;
+  font-size: 0.75rem;
+  font-weight: 700;
   text-align: center;
   color: var(--couleur-accent);
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.vignette-nom {
+  display: block;
+  padding: 0 0.3rem 0.3rem;
+  font-size: 0.6rem;
+  text-align: center;
+  color: #6b5b4a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Détail d'une carte */
@@ -301,22 +425,11 @@ h2 {
   font-size: 0.9rem;
 }
 
-.detail-sources {
-  font-size: 0.8rem;
+.detail-description {
+  font-size: 0.95rem;
   color: #6b5b4a;
-  border-top: 1px solid var(--couleur-bordure);
-  padding-top: 0.5rem;
-}
-
-.detail-sources ul {
-  list-style: none;
-  padding: 0;
-  margin-top: 0.25rem;
-}
-
-.detail-sources a {
-  color: var(--couleur-accent);
-  word-break: break-all;
+  margin-bottom: 0.75rem;
+  font-style: italic;
 }
 
 /* ============================== */
@@ -331,6 +444,7 @@ h2 {
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(58, 46, 31, 0.2);
+  max-width: 350px;
 }
 
 .quiz-image img {
@@ -694,6 +808,10 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
   }
+
+  .defi-carte { width: 80px; }
+  .defi-carte span { font-size: 0.65rem; }
+  .stat-valeur { font-size: 1.6rem; }
 
   .decouvrir-grille { gap: 0.75rem; }
 

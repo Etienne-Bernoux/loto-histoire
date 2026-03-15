@@ -14,11 +14,11 @@ import {
 import { etatProgressionVide } from './persistence.js';
 
 const CARTES_TEST = [
-  { id: 1, titre: '52 av. J.-C.', date: -52, description: 'Vercingétorix à Alésia', image: '', imageSansDate: '' },
-  { id: 2, titre: '451', date: 451, description: 'Attila repoussé', image: '', imageSansDate: '' },
-  { id: 3, titre: '496', date: 496, description: 'Baptême de Clovis', image: '', imageSansDate: '' },
-  { id: 4, titre: '732', date: 732, description: 'Charles Martel à Poitiers', image: '', imageSansDate: '' },
-  { id: 5, titre: '800', date: 800, description: 'Charlemagne empereur', image: '', imageSansDate: '' },
+  { id: 1, dateTexte: '52 av. J.-C.', date: -52, description: 'Vercingétorix à Alésia', image: '', imageSansDate: '' },
+  { id: 2, dateTexte: '451', date: 451, description: 'Attila repoussé', image: '', imageSansDate: '' },
+  { id: 3, dateTexte: '496', date: 496, description: 'Baptême de Clovis', image: '', imageSansDate: '' },
+  { id: 4, dateTexte: '732', date: 732, description: 'Charles Martel à Poitiers', image: '', imageSansDate: '' },
+  { id: 5, dateTexte: '800', date: 800, description: 'Charlemagne empereur', image: '', imageSansDate: '' },
 ];
 
 // === SAISIE LIBRE ===

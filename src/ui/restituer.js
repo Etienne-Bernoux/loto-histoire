@@ -138,9 +138,7 @@ function afficherSaisie(contenu) {
 
     const btnSuivant = contenu.querySelector('#saisie-suivant');
     btnSuivant.classList.remove('cache');
-    btnSuivant.style.display = 'block';
-    btnSuivant.style.margin = '1rem auto';
-    btnSuivant.addEventListener('click', () => afficherSaisie(contenu));
+    btnSuivant.onclick = () => afficherSaisie(contenu);
   });
 }
 

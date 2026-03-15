@@ -9,11 +9,11 @@ import {
 import { etatProgressionVide } from './persistence.js';
 
 const CARTES_TEST = [
-  { id: 1, titre: '1515', date: 1515 },
-  { id: 2, titre: '1789', date: 1789 },
-  { id: 3, titre: '-52', date: -52 },
-  { id: 4, titre: '800', date: 800 },
-  { id: 5, titre: '1214', date: 1214 },
+  { id: 1, dateTexte: '1515', date: 1515 },
+  { id: 2, dateTexte: '1789', date: 1789 },
+  { id: 3, dateTexte: '-52', date: -52 },
+  { id: 4, dateTexte: '800', date: 800 },
+  { id: 5, dateTexte: '1214', date: 1214 },
 ];
 
 describe('estMaitrisee', () => {
