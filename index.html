@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loto d'Histoire</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <h1>Loto d'Histoire</h1>
+    <p class="subtitle">Apprends l'histoire de France en jouant !</p>
+  </header>
+
+  <main>
+    <!-- Écran d'accueil : choix du mode -->
+    <section id="ecran-accueil" class="ecran">
+      <h2>Choisis ton mode de jeu</h2>
+      <div class="modes">
+        <button class="btn-mode" data-mode="loto">
+          <span class="mode-icone">&#127922;</span>
+          <span class="mode-titre">Loto classique</span>
+          <span class="mode-desc">Une date est tirée, trouve la bonne illustration !</span>
+        </button>
+        <button class="btn-mode" data-mode="quiz">
+          <span class="mode-icone">&#10068;</span>
+          <span class="mode-titre">Quiz</span>
+          <span class="mode-desc">Une image apparaît, trouve la bonne date parmi 4 propositions !</span>
+        </button>
+        <button class="btn-mode" data-mode="frise">
+          <span class="mode-icone">&#128197;</span>
+          <span class="mode-titre">Frise chronologique</span>
+          <span class="mode-desc">Replace les événements dans le bon ordre !</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Mode Loto -->
+    <section id="ecran-loto" class="ecran cache">
+      <div class="jeu-header">
+        <button id="loto-retour" class="btn btn-retour">Retour</button>
+        <div class="score-zone">
+          <span id="loto-score">0</span> / <span id="loto-total">9</span> trouvées
+        </div>
+      </div>
+
+      <div id="loto-tirage" class="tirage-zone">
+        <div class="tirage-date" id="loto-date">
+          <p class="placeholder">Clique pour tirer une date</p>
+        </div>
+        <div class="tirage-description" id="loto-description"></div>
+        <button id="loto-tirer" class="btn btn-principal">Tirer une date</button>
+      </div>
+
+      <div id="loto-plateau" class="plateau-loto"></div>
+    </section>
+
+    <!-- Mode Quiz -->
+    <section id="ecran-quiz" class="ecran cache">
+      <div class="jeu-header">
+        <button id="quiz-retour" class="btn btn-retour">Retour</button>
+        <div class="score-zone">
+          Score : <span id="quiz-score">0</span> / <span id="quiz-question-num">0</span>
+        </div>
+      </div>
+
+      <div id="quiz-zone" class="quiz-zone">
+        <div id="quiz-image" class="quiz-image"></div>
+        <p id="quiz-consigne" class="quiz-consigne">Quelle date correspond à cette illustration ?</p>
+        <div id="quiz-choix" class="quiz-choix"></div>
+      </div>
+
+      <div id="quiz-resultat" class="quiz-resultat cache"></div>
+      <button id="quiz-suivant" class="btn btn-principal cache">Question suivante</button>
+    </section>
+
+    <!-- Mode Frise -->
+    <section id="ecran-frise" class="ecran cache">
+      <div class="jeu-header">
+        <button id="frise-retour" class="btn btn-retour">Retour</button>
+        <div class="score-zone">
+          <span id="frise-places">0</span> / <span id="frise-total">6</span> placés
+        </div>
+      </div>
+
+      <p class="frise-consigne">Glisse les événements sur la frise dans l'ordre chronologique, de gauche à droite.</p>
+
+      <div id="frise-timeline" class="frise-timeline"></div>
+
+      <div id="frise-reserve" class="frise-reserve"></div>
+
+      <button id="frise-valider" class="btn btn-principal cache">Valider l'ordre</button>
+    </section>
+
+    <!-- Écran de fin -->
+    <section id="ecran-fin" class="ecran cache">
+      <div class="fin-contenu">
+        <h2 id="fin-titre"></h2>
+        <p id="fin-message"></p>
+        <div id="fin-details"></div>
+        <div class="fin-actions">
+          <button id="fin-rejouer" class="btn btn-principal">Rejouer</button>
+          <button id="fin-accueil" class="btn">Changer de mode</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Loto d'Histoire &mdash; Un jeu éducatif pour apprendre les grandes dates</p>
+  </footer>
+
+  <script type="module" src="src/ui/app.js"></script>
+</body>
+</html>

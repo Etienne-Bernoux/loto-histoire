@@ -1,0 +1,546 @@
+/* === Reset & Base === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --couleur-fond: #f5efe0;
+  --couleur-parchemin: #ede4d0;
+  --couleur-texte: #3a2e1f;
+  --couleur-accent: #8b1a1a;
+  --couleur-or: #c9a84c;
+  --couleur-bordure: #b8a88a;
+  --couleur-succes: #4a7c4a;
+  --couleur-erreur: #a03030;
+  --ombre: 0 2px 8px rgba(58, 46, 31, 0.15);
+}
+
+body {
+  font-family: 'Lora', Georgia, 'Times New Roman', serif;
+  background-color: var(--couleur-fond);
+  color: var(--couleur-texte);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* === En-tête === */
+header {
+  text-align: center;
+  padding: 1rem;
+  background: linear-gradient(to bottom, var(--couleur-parchemin), var(--couleur-fond));
+  border-bottom: 2px solid var(--couleur-bordure);
+}
+
+h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.6rem;
+  color: var(--couleur-accent);
+  letter-spacing: 0.05em;
+}
+
+.subtitle {
+  margin-top: 0.2rem;
+  font-style: italic;
+  color: #6b5b4a;
+  font-size: 0.9rem;
+}
+
+/* === Contenu principal === */
+main {
+  flex: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 0.75rem;
+  width: 100%;
+}
+
+.ecran { animation: fadeIn 0.3s ease; }
+.cache { display: none !important; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.3rem;
+  color: var(--couleur-accent);
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+/* === Boutons communs === */
+.btn {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 6px;
+  background: var(--couleur-parchemin);
+  color: var(--couleur-texte);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.btn:hover { background: #ddd4c0; }
+.btn:active { transform: scale(0.97); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.btn-principal {
+  background: var(--couleur-accent);
+  color: #f5efe0;
+  border-color: var(--couleur-accent);
+}
+.btn-principal:hover:not(:disabled) { background: #a02020; }
+
+.btn-retour {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.8rem;
+}
+
+/* === Header du jeu === */
+.jeu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.score-zone {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--couleur-accent);
+}
+
+/* === Écran d'accueil === */
+.modes {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.btn-mode {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.5rem 1rem;
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: var(--ombre);
+  font-family: inherit;
+  color: var(--couleur-texte);
+}
+
+.btn-mode:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(58, 46, 31, 0.2);
+  border-color: var(--couleur-or);
+}
+
+.mode-icone { font-size: 2rem; }
+.mode-titre {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--couleur-accent);
+}
+.mode-desc {
+  font-size: 0.85rem;
+  color: #6b5b4a;
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* ===================== */
+/* === MODE LOTO ======= */
+/* ===================== */
+
+.tirage-zone {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.tirage-date {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 900;
+  color: var(--couleur-accent);
+  background: var(--couleur-parchemin);
+  border: 3px solid var(--couleur-or);
+  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  display: inline-block;
+  min-width: 160px;
+  margin-bottom: 0.5rem;
+  box-shadow: 0 4px 16px rgba(58, 46, 31, 0.2);
+}
+
+.tirage-date .placeholder {
+  font-size: 0.85rem;
+  font-weight: 400;
+  font-family: 'Lora', Georgia, serif;
+  color: #9a8b78;
+  font-style: italic;
+}
+
+.tirage-description {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #6b5b4a;
+  margin-bottom: 0.75rem;
+  min-height: 1.3em;
+}
+
+.plateau-loto {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.carte-loto {
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  box-shadow: var(--ombre);
+  position: relative;
+}
+
+.carte-loto:hover:not(.trouvee) {
+  border-color: var(--couleur-or);
+}
+
+.carte-loto img {
+  width: 100%;
+  aspect-ratio: 800 / 530;
+  object-fit: cover;
+  display: block;
+}
+
+.carte-loto.trouvee {
+  border-color: var(--couleur-succes);
+  cursor: default;
+}
+
+.carte-loto .loto-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(74, 124, 74, 0.7);
+  color: white;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 900;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.carte-loto.trouvee .loto-overlay { opacity: 1; }
+
+.carte-loto.erreur {
+  animation: shake 0.4s ease;
+  border-color: var(--couleur-erreur);
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ===================== */
+/* === MODE QUIZ ======= */
+/* ===================== */
+
+.quiz-zone { text-align: center; }
+
+.quiz-image {
+  margin: 0 auto 0.75rem;
+  border: 3px solid var(--couleur-or);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(58, 46, 31, 0.2);
+}
+
+.quiz-image img {
+  width: 100%;
+  display: block;
+}
+
+.quiz-consigne {
+  font-size: 0.95rem;
+  font-style: italic;
+  color: #6b5b4a;
+  margin-bottom: 1rem;
+}
+
+.quiz-choix {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin: 0 auto 1rem;
+}
+
+.quiz-option {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.8rem;
+  background: var(--couleur-parchemin);
+  border: 3px solid var(--couleur-bordure);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+  color: var(--couleur-texte);
+}
+
+.quiz-option:hover:not(:disabled) { border-color: var(--couleur-or); }
+
+.quiz-option.correct {
+  background: #d4edda;
+  border-color: var(--couleur-succes);
+  color: var(--couleur-succes);
+}
+
+.quiz-option.incorrect {
+  background: #f8d7da;
+  border-color: var(--couleur-erreur);
+  color: var(--couleur-erreur);
+}
+
+.quiz-option:disabled { cursor: default; }
+
+.quiz-resultat {
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.quiz-resultat.succes {
+  background: #d4edda;
+  color: var(--couleur-succes);
+  border: 2px solid var(--couleur-succes);
+}
+
+.quiz-resultat.echec {
+  background: #f8d7da;
+  color: var(--couleur-erreur);
+  border: 2px solid var(--couleur-erreur);
+}
+
+#quiz-suivant {
+  display: block;
+  margin: 0 auto;
+}
+
+/* ===================== */
+/* === MODE FRISE ====== */
+/* ===================== */
+
+.frise-consigne {
+  text-align: center;
+  font-style: italic;
+  color: #6b5b4a;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.frise-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: var(--couleur-parchemin);
+  border: 2px dashed var(--couleur-bordure);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  min-height: 120px;
+  position: relative;
+}
+
+.frise-slot {
+  min-height: 70px;
+  border: 2px dashed var(--couleur-bordure);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.frise-slot.drag-over {
+  border-color: var(--couleur-or);
+  background: rgba(201, 168, 76, 0.15);
+}
+
+.frise-slot .slot-number {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.2rem;
+  color: var(--couleur-bordure);
+}
+
+.frise-reserve {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.frise-carte {
+  width: 100px;
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: grab;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--ombre);
+  user-select: none;
+}
+
+.frise-carte:active { cursor: grabbing; }
+
+.frise-carte img {
+  width: 100%;
+  aspect-ratio: 800 / 530;
+  object-fit: cover;
+  display: block;
+}
+
+.frise-carte .frise-carte-titre {
+  padding: 0.25rem;
+  font-size: 0.65rem;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.frise-carte.dans-frise {
+  width: 100%;
+  max-width: 100px;
+}
+
+.frise-carte.correct { border-color: var(--couleur-succes); }
+.frise-carte.incorrect { border-color: var(--couleur-erreur); }
+
+#frise-valider {
+  display: block;
+  margin: 0 auto;
+}
+
+/* === Écran de fin === */
+.fin-contenu {
+  text-align: center;
+  margin: 1.5rem auto;
+  padding: 1.5rem;
+  background: var(--couleur-parchemin);
+  border: 3px solid var(--couleur-or);
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(58, 46, 31, 0.2);
+}
+
+#fin-message {
+  font-size: 1.1rem;
+  margin: 0.75rem 0;
+  color: #6b5b4a;
+}
+
+#fin-details {
+  font-size: 0.9rem;
+  margin-bottom: 1.2rem;
+  color: var(--couleur-texte);
+}
+
+.fin-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* === Pied de page === */
+footer {
+  text-align: center;
+  padding: 0.75rem;
+  border-top: 2px solid var(--couleur-bordure);
+  color: #6b5b4a;
+  font-size: 0.8rem;
+}
+
+/* ================================ */
+/* === TABLETTE (min-width 600) === */
+/* ================================ */
+@media (min-width: 600px) {
+  header { padding: 1.5rem 1rem; }
+  h1 { font-size: 2rem; }
+  .subtitle { font-size: 1rem; }
+  main { padding: 1.5rem 1rem; }
+  h2 { font-size: 1.5rem; }
+
+  .modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+
+  .plateau-loto { gap: 0.75rem; }
+
+  .tirage-date { font-size: 2.8rem; }
+
+  .quiz-image { max-width: 450px; }
+  .quiz-choix { grid-template-columns: 1fr 1fr; max-width: 500px; }
+
+  .frise-timeline { flex-direction: row; align-items: center; }
+  .frise-slot { flex: 1; min-height: 140px; min-width: 100px; }
+  .frise-carte { width: 130px; }
+  .frise-carte.dans-frise { max-width: 120px; }
+}
+
+/* ================================ */
+/* === DESKTOP (min-width 900) ==== */
+/* ================================ */
+@media (min-width: 900px) {
+  h1 { font-size: 2.4rem; }
+  main { padding: 2rem 1rem; }
+
+  .btn-mode { padding: 2rem 1.5rem; }
+  .mode-titre { font-size: 1.3rem; }
+
+  .plateau-loto { gap: 1rem; max-width: 750px; margin: 0 auto; }
+
+  .carte-loto:hover:not(.trouvee) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(58, 46, 31, 0.25);
+  }
+
+  .carte-loto .loto-overlay { font-size: 1.8rem; }
+  .tirage-date { font-size: 3.2rem; padding: 1rem 2rem; }
+
+  .quiz-image { max-width: 500px; }
+  .quiz-option { font-size: 1.3rem; padding: 1rem; }
+  .quiz-option:hover:not(:disabled) { transform: scale(1.03); }
+
+  .frise-carte { width: 140px; }
+  .frise-carte.dans-frise { max-width: 130px; }
+  .fin-contenu { padding: 2rem; margin: 2rem auto; max-width: 600px; }
+}
