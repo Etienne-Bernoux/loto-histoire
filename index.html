@@ -94,7 +94,18 @@
 
   <footer>
     <p>Loto d'Histoire &mdash; Un jeu éducatif pour apprendre les grandes dates</p>
+    <a href="#" id="lien-espace-prof" class="footer-lien-prof">Espace professeur</a>
   </footer>
+
+  <!-- Espace professeur (caché par défaut) -->
+  <div id="espace-prof" class="espace-prof cache">
+    <div class="espace-prof-header">
+      <h2>Espace professeur</h2>
+      <button class="btn" id="fermer-espace-prof">Fermer</button>
+    </div>
+    <p class="espace-prof-intro">Consultez le contenu éditorial de chaque carte. Sélectionnez une carte pour voir son contenu et proposer des modifications par email.</p>
+    <div id="prof-cartes" class="prof-cartes"></div>
+  </div>
 
   <script type="module" src="src/ui/app.js"></script>
 </body>

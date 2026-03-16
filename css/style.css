@@ -860,6 +860,254 @@ footer {
   font-size: 0.8rem;
 }
 
+.footer-lien-prof {
+  display: inline-block;
+  margin-top: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--couleur-bordure);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-lien-prof:hover {
+  color: var(--couleur-accent);
+}
+
+/* ============================== */
+/* === ESPACE PROFESSEUR ======== */
+/* ============================== */
+
+.espace-prof {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.espace-prof-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.espace-prof-header h2 {
+  margin-bottom: 0;
+}
+
+.espace-prof-intro {
+  font-size: 0.9rem;
+  color: #6b5b4a;
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.prof-cartes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.prof-carte {
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 12px;
+  padding: 1rem;
+  animation: slideUp 0.3s ease both;
+}
+
+.prof-carte-header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.prof-carte-img {
+  width: 100px;
+  border-radius: 6px;
+  border: 2px solid var(--couleur-or);
+  flex-shrink: 0;
+}
+
+.prof-carte-header h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1rem;
+  color: var(--couleur-accent);
+  margin-bottom: 0.25rem;
+}
+
+.prof-carte-desc {
+  font-size: 0.85rem;
+  color: #6b5b4a;
+  font-style: italic;
+}
+
+.prof-carte-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prof-section {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.prof-section strong {
+  display: block;
+  color: var(--couleur-accent);
+  font-size: 0.8rem;
+  margin-bottom: 0.15rem;
+}
+
+.prof-btn-mail {
+  display: inline-block;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.prof-select-zone {
+  margin-bottom: 1.25rem;
+}
+
+.prof-select-zone label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+  color: var(--couleur-accent);
+  font-size: 0.9rem;
+}
+
+.prof-select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 8px;
+  background: white;
+  color: var(--couleur-texte);
+  cursor: pointer;
+}
+
+.prof-select:focus {
+  outline: none;
+  border-color: var(--couleur-or);
+}
+
+/* Accordéon */
+.prof-accordeon {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.prof-accordeon-item {
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.prof-accordeon-item[open] {
+  border-color: var(--couleur-or);
+}
+
+.prof-accordeon-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  cursor: pointer;
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--couleur-texte);
+  list-style: none;
+}
+
+.prof-accordeon-header::-webkit-details-marker {
+  display: none;
+}
+
+.prof-accordeon-header::before {
+  content: '>';
+  font-size: 0.8rem;
+  color: var(--couleur-bordure);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+
+.prof-accordeon-item[open] .prof-accordeon-header::before {
+  transform: rotate(90deg);
+}
+
+.prof-accordeon-img {
+  width: 50px;
+  height: 33px;
+  object-fit: cover;
+  border-radius: 4px;
+  border: 1px solid var(--couleur-bordure);
+  flex-shrink: 0;
+}
+
+.prof-accordeon-contenu {
+  padding: 0 0.75rem 0.75rem;
+  animation: slideUp 0.2s ease;
+}
+
+.prof-separator {
+  border: none;
+  border-top: 2px solid var(--couleur-bordure);
+  margin: 1.5rem 0;
+}
+
+.prof-nouvelle-carte {
+  padding: 1rem;
+  background: var(--couleur-parchemin);
+  border: 2px solid var(--couleur-bordure);
+  border-radius: 12px;
+}
+
+.prof-nouvelle-carte h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  color: var(--couleur-accent);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.prof-nouvelle-carte p,
+.prof-nouvelle-carte li {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.prof-nouvelle-carte ul {
+  margin: 0.5rem 0 1rem 1.2rem;
+}
+
+.prof-section a {
+  color: var(--couleur-accent);
+  word-break: break-all;
+}
+
+.prof-section-light {
+  font-size: 0.8rem;
+  color: #9a8b78;
+  margin-top: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.prof-liste-light {
+  font-size: 0.8rem;
+  color: #9a8b78;
+  margin-bottom: 1rem;
+}
+
 /* ============================== */
 /* === PERSONNAGE =============== */
 /* ============================== */

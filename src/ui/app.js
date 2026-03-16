@@ -151,8 +151,125 @@ function init() {
     btn.addEventListener('click', retourAccueil);
   });
 
+  // Espace professeur
+  $('lien-espace-prof')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    ouvrirEspaceProf();
+  });
+  $('fermer-espace-prof')?.addEventListener('click', fermerEspaceProf);
+
   majAccueil();
   afficherEcran('ecran-accueil');
+}
+
+/** Ouvre l'espace professeur */
+function ouvrirEspaceProf() {
+  const conteneur = $('prof-cartes');
+
+  // Sélecteur rapide + accordéon de toutes les cartes
+  conteneur.innerHTML = `
+    <div class="prof-select-zone">
+      <label for="prof-select">Accès rapide :</label>
+      <select id="prof-select" class="prof-select">
+        <option value="">— Sélectionner une carte —</option>
+        ${CARTES_HISTOIRE.map(c => `<option value="${c.id}">${c.dateTexte} — ${c.titre}</option>`).join('')}
+      </select>
+    </div>
+    <div class="prof-accordeon">
+      ${CARTES_HISTOIRE.map(carte => `
+        <details class="prof-accordeon-item" data-id="${carte.id}">
+          <summary class="prof-accordeon-header">
+            <img src="${carte.image}" alt="${carte.titre}" class="prof-accordeon-img">
+            <span>${carte.dateTexte} — ${carte.titre}</span>
+          </summary>
+          <div class="prof-accordeon-contenu" id="prof-accordeon-${carte.id}"></div>
+        </details>
+      `).join('')}
+    </div>
+    <hr class="prof-separator">
+    <div class="prof-nouvelle-carte">
+      <h3>Proposer une nouvelle carte</h3>
+      <p>Le contenu textuel (date, titre, anecdote, paragraphe) peut être rédigé ensemble. En revanche, <strong>les illustrations doivent impérativement être fournies</strong> :</p>
+      <ul>
+        <li><strong>Image avec date</strong> : illustration de l'événement avec la date visible (PNG, 800x530px)</li>
+        <li><strong>Image sans date</strong> : même illustration sans la date (PNG, 800x530px)</li>
+      </ul>
+      <p>Merci de joindre les deux images à votre email, ou d'indiquer un lien de téléchargement.</p>
+      <p class="prof-section-light">Les éléments suivants sont optionnels dans votre proposition (ils peuvent être complétés ensuite) :</p>
+      <ul class="prof-liste-light">
+        <li>Date et titre de l'événement</li>
+        <li>Anecdote (1-2 phrases accrocheuses)</li>
+        <li>Paragraphe explicatif (3-5 phrases, vocabulaire simple)</li>
+        <li>Source (herodote.net ou site spécialisé)</li>
+      </ul>
+      <a class="btn btn-principal prof-btn-mail" href="mailto:etienne@bernoux.fr?subject=${encodeURIComponent("[Loto d'Histoire] Proposition de nouvelle carte")}&body=${encodeURIComponent("Bonjour,\n\nJe souhaite proposer une nouvelle carte :\n\nDate : \nTitre : \nDescription : \nAnecdote : \nParagraphe explicatif : \nSource : \n\nMerci,")}">
+        Proposer une nouvelle carte
+      </a>
+    </div>
+  `;
+
+  // Remplir le contenu d'un accordéon au premier clic (lazy)
+  conteneur.querySelectorAll('.prof-accordeon-item').forEach(details => {
+    details.addEventListener('toggle', () => {
+      if (!details.open) return;
+      const id = parseInt(details.dataset.id);
+      const carte = CARTES_HISTOIRE.find(c => c.id === id);
+      const contenu = details.querySelector('.prof-accordeon-contenu');
+      if (contenu.innerHTML) return; // déjà rempli
+      afficherDetailProf(contenu, carte);
+    });
+  });
+
+  // Select rapide → ouvre l'accordéon correspondant et scroll
+  conteneur.querySelector('#prof-select').addEventListener('change', (e) => {
+    const id = e.target.value;
+    if (!id) return;
+    // Fermer tous les autres
+    conteneur.querySelectorAll('.prof-accordeon-item').forEach(d => d.open = false);
+    // Ouvrir le bon
+    const target = conteneur.querySelector(`.prof-accordeon-item[data-id="${id}"]`);
+    if (target) {
+      target.open = true;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  $('espace-prof').classList.remove('cache');
+  $('espace-prof').scrollIntoView({ behavior: 'smooth' });
+}
+
+/** Affiche le détail d'une carte dans l'espace prof (accordéon) */
+function afficherDetailProf(conteneur, carte) {
+  const sourcesHtml = carte.sources?.length
+    ? carte.sources.map(s => `<a href="${s}" target="_blank" rel="noopener">${s}</a>`).join(', ')
+    : '<em>Aucune</em>';
+
+  conteneur.innerHTML = `
+    <p class="prof-carte-desc">${carte.description}</p>
+    <div class="prof-carte-contenu">
+      <div class="prof-section">
+        <strong>Anecdote</strong>
+        <p>${carte.anecdote || '<em>Non renseignée</em>'}</p>
+      </div>
+      <div class="prof-section">
+        <strong>Paragraphe explicatif</strong>
+        <p>${carte.paragraphe || '<em>Non renseigné</em>'}</p>
+      </div>
+      <div class="prof-section">
+        <strong>Sources</strong>
+        <p>${sourcesHtml}</p>
+      </div>
+    </div>
+    <a class="btn prof-btn-mail" href="mailto:etienne@bernoux.fr?subject=${encodeURIComponent(`[Loto d'Histoire] Carte ${carte.dateTexte} — ${carte.titre}`)}&body=${encodeURIComponent(`Bonjour,\n\nJe souhaite proposer une modification pour la carte :\n\n${carte.dateTexte} — ${carte.titre}\n${carte.description}\n\nAnecdote actuelle :\n${carte.anecdote}\n\nParagraphe actuel :\n${carte.paragraphe}\n\nModification proposée :\n\n\n\nMerci,`)}">
+      Proposer une modification
+    </a>
+  `;
+}
+
+/** Ferme l'espace professeur */
+function fermerEspaceProf() {
+  $('espace-prof').classList.add('cache');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 document.addEventListener('DOMContentLoaded', init);
