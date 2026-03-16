@@ -2,18 +2,18 @@
  * UI — Étape 3 : Restituer
  * Deux sous-modes : saisie libre et frise chronologique.
  */
-import { CARTES_HISTOIRE } from '../domain/cartes.js';
+import { CARTES_HISTOIRE } from '../domain/cartes/cartes.js';
 import {
   creerSessionSaisie, carteCouranteSaisie, verifierSaisie, scoreSaisie,
   creerSessionFrise, placerCarteFrise, retirerCarteFrise,
   nbPlacesFrise, estCompletFrise, validerOrdreFrise,
-} from '../domain/restituer.js';
+} from '../domain/jeu/restituer.js';
 import {
   chargerProgression, sauverProgression, chargerLudique, sauverLudique,
-} from '../domain/persistence.js';
-import { enregistrerResultat } from '../domain/repetition.js';
-import { incrementerStreak, resetStreak } from '../domain/streaks.js';
-import { commentaireReussite, commentaireErreur } from '../domain/personnage.js';
+} from '../domain/progression/persistence.js';
+import { enregistrerResultat } from '../domain/progression/repetition.js';
+import { incrementerStreak, resetStreak } from '../domain/progression/streaks.js';
+import { commentaireReussite, commentaireErreur } from '../domain/ludique/personnage.js';
 import { direReplique, montrerPersonnage } from './personnage-ui.js';
 
 let session = null;

@@ -1,8 +1,13 @@
 import { defineConfig } from '@playwright/test';
+import { defineBddConfig } from 'playwright-bdd';
+
+const testDir = defineBddConfig({
+  features: 'tests/e2e/features/**/*.feature',
+  steps: 'tests/e2e/steps/**/*.js',
+});
 
 export default defineConfig({
-  testDir: './tests/e2e',
-  testMatch: '**/*.spec.js',
+  testDir,
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,

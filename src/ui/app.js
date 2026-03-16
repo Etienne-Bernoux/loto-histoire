@@ -2,9 +2,9 @@
  * App — Shell de navigation principal.
  * Gère les transitions entre les 3 étapes et l'écran d'accueil.
  */
-import { CARTES_HISTOIRE } from '../domain/cartes.js';
-import { chargerProgression, chargerLudique, sauverLudique } from '../domain/persistence.js';
-import { majDefiDuJour } from '../domain/defi-du-jour.js';
+import { CARTES_HISTOIRE } from '../domain/cartes/cartes.js';
+import { chargerProgression, chargerLudique, sauverLudique } from '../domain/progression/persistence.js';
+import { majDefiDuJour } from '../domain/ludique/defi-du-jour.js';
 import { initialiserDecouvrir } from './decouvrir.js';
 import { initialiserAssocier } from './associer.js';
 import { initialiserRestituer } from './restituer.js';

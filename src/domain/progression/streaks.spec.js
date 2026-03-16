@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { incrementerStreak, resetStreak, messageStreak } from './streaks.js';
-import { etatLudiqueVide } from './persistence.js';
+import { etatLudiqueVide } from '../progression/persistence.js';
 
 describe('incrementerStreak', () => {
   it('incrémente le streak de 1', () => {

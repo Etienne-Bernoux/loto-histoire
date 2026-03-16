@@ -2,35 +2,63 @@
  * UI — Étape 2 : Associer
  * QCM à 4 choix avec deux sous-modes.
  */
-import { CARTES_HISTOIRE } from '../domain/cartes.js';
+import { CARTES_HISTOIRE } from '../domain/cartes/cartes.js';
 import {
   creerSessionAssocier,
   genererQuestion,
   repondreAssocier,
   scoreAssocier,
-} from '../domain/associer.js';
+} from '../domain/jeu/associer.js';
 import {
   chargerProgression,
   sauverProgression,
   chargerLudique,
   sauverLudique,
-} from '../domain/persistence.js';
-import { enregistrerResultat } from '../domain/repetition.js';
-import { incrementerStreak, resetStreak, messageStreak } from '../domain/streaks.js';
-import { commentaireReussite, commentaireErreur, commentaireStreak } from '../domain/personnage.js';
+} from '../domain/progression/persistence.js';
+import { enregistrerResultat } from '../domain/progression/repetition.js';
+import { incrementerStreak, resetStreak, messageStreak } from '../domain/progression/streaks.js';
+import { commentaireReussite, commentaireErreur, commentaireStreak } from '../domain/ludique/personnage.js';
 import { direReplique, montrerPersonnage } from './personnage-ui.js';
+import { initialiserMemory } from './memory.js';
 
 let session = null;
 let ecranEl = null;
 let onTermine = null;
 
-/** Initialise l'écran Associer */
+/** Initialise l'écran Associer avec choix de sous-mode */
 export function initialiserAssocier(ecran, { nbCartes = 10, onFin } = {}) {
   ecranEl = ecran;
   onTermine = onFin;
-  const progression = chargerProgression(CARTES_HISTOIRE);
-  session = creerSessionAssocier(CARTES_HISTOIRE, progression, nbCartes);
-  afficherQuestion();
+
+  const contenu = ecran.querySelector('.associer-contenu') || creerConteneur();
+  contenu.innerHTML = `
+    <div class="choix-sous-mode">
+      <h3>Choisis ton mode</h3>
+      <button class="btn-etape" id="btn-qcm">
+        <span class="etape-titre">Quiz</span>
+        <span class="etape-desc">Choisis la bonne réponse parmi 4 propositions</span>
+      </button>
+      <button class="btn-etape" id="btn-memory">
+        <span class="etape-titre">Memory</span>
+        <span class="etape-desc">Retrouve les paires image ↔ événement</span>
+      </button>
+    </div>
+  `;
+
+  contenu.querySelector('#btn-qcm').addEventListener('click', () => {
+    const progression = chargerProgression(CARTES_HISTOIRE);
+    session = creerSessionAssocier(CARTES_HISTOIRE, progression, nbCartes);
+    afficherQuestion();
+  });
+
+  contenu.querySelector('#btn-memory').addEventListener('click', () => {
+    initialiserMemory(contenu, {
+      nbPaires: 6,
+      onFin: (paires, total, coups) => {
+        if (onTermine) onTermine(paires, total);
+      },
+    });
+  });
 }
 
 /** Affiche la question courante */

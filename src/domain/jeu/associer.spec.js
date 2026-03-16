@@ -5,7 +5,7 @@ import {
   repondreAssocier,
   scoreAssocier,
 } from './associer.js';
-import { etatProgressionVide } from './persistence.js';
+import { etatProgressionVide } from '../progression/persistence.js';
 
 const CARTES_TEST = [
   { id: 1, dateTexte: '52 av. J.-C.', date: -52, description: 'Vercingétorix à Alésia', image: '', imageSansDate: '' },

@@ -2,7 +2,7 @@
  * UI — Étape 1 : Découvrir
  * Navigation libre dans les cartes historiques.
  */
-import { CARTES_HISTOIRE } from '../domain/cartes.js';
+import { CARTES_HISTOIRE } from '../domain/cartes/cartes.js';
 
 let carteIndex = 0;
 let conteneurGrille = null;

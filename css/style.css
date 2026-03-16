@@ -587,6 +587,110 @@ h2 {
 }
 
 /* ============================== */
+/* === MEMORY =================== */
+/* ============================== */
+
+.memory-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 1rem;
+}
+
+.memory-grille {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.memory-tuile {
+  aspect-ratio: 3 / 4;
+  perspective: 600px;
+  cursor: pointer;
+}
+
+.memory-tuile-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transition: transform 0.5s ease;
+  transform-style: preserve-3d;
+}
+
+.memory-tuile.retournee .memory-tuile-inner,
+.memory-tuile.trouvee .memory-tuile-inner {
+  transform: rotateY(180deg);
+}
+
+.memory-tuile-dos,
+.memory-tuile-face {
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  backface-visibility: hidden;
+  border: 2px solid var(--couleur-bordure);
+  overflow: hidden;
+}
+
+.memory-tuile-dos {
+  background: linear-gradient(135deg, var(--couleur-accent) 0%, #6b1515 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--ombre);
+}
+
+.memory-tuile-dos::after {
+  content: '?';
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--couleur-or);
+}
+
+.memory-tuile-face {
+  background: var(--couleur-parchemin);
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.memory-tuile-face img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.memory-tuile-texte {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--couleur-accent);
+  text-align: center;
+  padding: 0.3rem;
+  line-height: 1.2;
+}
+
+.memory-tuile.trouvee {
+  pointer-events: none;
+}
+
+.memory-tuile.trouvee .memory-tuile-face {
+  border-color: var(--couleur-succes);
+  animation: pulse 0.5s ease;
+}
+
+.memory-tuile:hover:not(.retournee):not(.trouvee) .memory-tuile-inner {
+  transform: scale(1.04);
+}
+
+.memory-tuile:active:not(.retournee):not(.trouvee) .memory-tuile-inner {
+  transform: scale(0.96);
+}
+
+/* ============================== */
 /* === ÉTAPE 3 : RESTITUER ====== */
 /* ============================== */
 
@@ -881,6 +985,9 @@ footer {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
   }
+
+  .memory-tuile-texte { font-size: 0.8rem; }
+  .memory-grille { gap: 0.75rem; }
 
   .defi-carte { width: 80px; }
   .defi-carte span { font-size: 0.65rem; }

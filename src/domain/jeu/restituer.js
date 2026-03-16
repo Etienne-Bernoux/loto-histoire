@@ -2,8 +2,8 @@
  * Domaine — Étape 3 : Restituer
  * Deux sous-modes : saisie libre (taper la date) et frise chronologique (réordonner).
  */
-import { melanger } from './melanger.js';
-import { selectionnerCartes } from './repetition.js';
+import { melanger } from '../melanger.js';
+import { selectionnerCartes } from '../progression/repetition.js';
 
 // === SAISIE LIBRE ===
 

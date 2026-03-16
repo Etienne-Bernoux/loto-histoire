@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { genererDefiDuJour, estNouveauJour, majDefiDuJour } from './defi-du-jour.js';
-import { etatLudiqueVide } from './persistence.js';
+import { etatLudiqueVide } from '../progression/persistence.js';
 
 const CARTES_TEST = [
   { id: 1, dateTexte: '1515', date: 1515 },

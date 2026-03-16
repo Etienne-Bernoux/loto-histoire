@@ -2,9 +2,9 @@
  * UI — Frise de progression
  * Affiche la progression globale et les étoiles sur l'accueil.
  */
-import { CARTES_HISTOIRE } from '../domain/cartes.js';
-import { chargerProgression } from '../domain/persistence.js';
-import { totalEtoiles, maxEtoiles } from '../domain/etoiles.js';
+import { CARTES_HISTOIRE } from '../domain/cartes/cartes.js';
+import { chargerProgression } from '../domain/progression/persistence.js';
+import { totalEtoiles, maxEtoiles } from '../domain/progression/etoiles.js';
 
 /** Crée ou met à jour le widget de progression dans un conteneur */
 export function afficherProgression(conteneur) {

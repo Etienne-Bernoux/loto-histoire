@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { estRecord, majRecord, formaterTemps } from './chrono.js';
-import { etatLudiqueVide } from './persistence.js';
+import { etatLudiqueVide } from '../progression/persistence.js';
 
 describe('estRecord', () => {
   it('retourne true si pas de record', () => {

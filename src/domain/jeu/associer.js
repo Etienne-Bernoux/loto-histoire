@@ -2,8 +2,8 @@
  * Domaine — Étape 2 : Associer
  * QCM date ↔ événement avec deux sous-modes alternés aléatoirement.
  */
-import { melanger } from './melanger.js';
-import { selectionnerCartes } from './repetition.js';
+import { melanger } from '../melanger.js';
+import { selectionnerCartes } from '../progression/repetition.js';
 
 /**
  * Crée une session Associer.

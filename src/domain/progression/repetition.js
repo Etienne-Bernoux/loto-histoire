@@ -11,7 +11,7 @@
  *   1 jour → 3 jours → 7 jours → 14 jours
  */
 
-import { melanger } from './melanger.js';
+import { melanger } from '../melanger.js';
 
 const SEUIL_MAITRISE = 3;
 const INTERVALLES_JOURS = [1, 3, 7, 14];
