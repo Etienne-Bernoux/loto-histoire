@@ -253,11 +253,11 @@ export const CARTES_HISTOIRE = Object.freeze([
   },
   {
     id: 27, date: 1789, dateTexte: "1789",
-    titre: "Prise de la Bastille",
-    description: "Révolution française, prise de la Bastille",
-    anecdote: "La Bastille était une prison, mais le jour de sa prise, il n'y avait que 7 prisonniers à l'intérieur ! Les Parisiens y cherchaient surtout de la poudre et des armes.",
-    paragraphe: "Le 14 juillet 1789, les Parisiens sont en colère. Le roi Louis XVI a renvoyé son ministre Necker et des troupes entourent Paris. Le peuple s'arme aux Invalides puis se dirige vers la Bastille, une forteresse-prison qui symbolise le pouvoir royal. Après des combats, la garnison se rend. C'est le début de la Révolution française, qui va changer la France pour toujours.",
-    sources: ["https://www.herodote.net/14_juillet_1789-evenement-17890714.php"],
+    titre: "Ouverture des États généraux",
+    description: "Le roi Louis XVI ouvre les États généraux à Versailles",
+    anecdote: "Les États généraux n'avaient pas été réunis depuis 175 ans ! La dernière fois, c'était en 1614. Le roi espérait résoudre les problèmes d'argent du royaume, mais cette réunion allait déclencher la Révolution.",
+    paragraphe: "Le 5 mai 1789, le roi Louis XVI réunit les États généraux à Versailles. Le royaume est en faillite et le roi a besoin de l'accord des représentants du peuple pour lever de nouveaux impôts. Les députés du tiers état (le peuple) veulent plus de pouvoir. Ils se déclarent Assemblée nationale et jurent de donner une Constitution à la France. C'est le début de la Révolution française.",
+    sources: ["https://www.herodote.net/5_mai_1789-evenement-17890505.php"],
     ...images(27),
   },
 ]);

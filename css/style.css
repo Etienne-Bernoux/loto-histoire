@@ -57,12 +57,38 @@ main {
   width: 100%;
 }
 
-.ecran { animation: fadeIn 0.3s ease; }
+.ecran { animation: fadeIn 0.4s ease; }
 .cache { display: none !important; }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-15px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(201, 168, 76, 0); }
+  50% { box-shadow: 0 0 12px rgba(201, 168, 76, 0.4); }
 }
 
 h2 {
@@ -83,11 +109,11 @@ h2 {
   background: var(--couleur-parchemin);
   color: var(--couleur-texte);
   cursor: pointer;
-  transition: background 0.2s, transform 0.1s;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
 }
 
-.btn:hover { background: #ddd4c0; }
-.btn:active { transform: scale(0.97); }
+.btn:hover { background: #ddd4c0; box-shadow: 0 2px 8px rgba(58, 46, 31, 0.15); }
+.btn:active { transform: scale(0.95); }
 .btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
 .btn-principal {
@@ -95,7 +121,11 @@ h2 {
   color: #f5efe0;
   border-color: var(--couleur-accent);
 }
-.btn-principal:hover:not(:disabled) { background: #a02020; }
+.btn-principal:hover:not(:disabled) {
+  background: #a02020;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 26, 26, 0.3);
+}
 
 .btn-retour {
   font-size: 0.8rem;
@@ -152,10 +182,12 @@ h2 {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
+  animation: slideIn 0.5s ease;
 }
 
 .accueil-maestro-img {
   flex-shrink: 0;
+  animation: pop 0.6s ease 0.2s both;
 }
 
 .accueil-maestro-bulle {
@@ -179,7 +211,12 @@ h2 {
   background: var(--couleur-parchemin);
   border: 2px solid var(--couleur-bordure);
   border-radius: 10px;
+  animation: pop 0.4s ease both;
 }
+
+.accueil-stat:nth-child(1) { animation-delay: 0.1s; }
+.accueil-stat:nth-child(2) { animation-delay: 0.2s; }
+.accueil-stat:nth-child(3) { animation-delay: 0.3s; }
 
 .stat-valeur {
   display: block;
@@ -204,6 +241,7 @@ h2 {
   border: 2px solid var(--couleur-or);
   border-radius: 12px;
   text-align: center;
+  animation: slideUp 0.5s ease 0.15s both, glow 3s ease-in-out 1s infinite;
 }
 
 .defi-titre {
@@ -245,6 +283,7 @@ h2 {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .btn-etape {
@@ -257,16 +296,25 @@ h2 {
   border: 2px solid var(--couleur-bordure);
   border-radius: 12px;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   box-shadow: var(--ombre);
   font-family: inherit;
   color: var(--couleur-texte);
+  animation: slideUp 0.4s ease both;
 }
 
+.btn-etape:nth-child(1) { animation-delay: 0.1s; }
+.btn-etape:nth-child(2) { animation-delay: 0.2s; }
+.btn-etape:nth-child(3) { animation-delay: 0.3s; }
+
 .btn-etape:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(58, 46, 31, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(58, 46, 31, 0.25);
   border-color: var(--couleur-or);
+}
+
+.btn-etape:active {
+  transform: translateY(-1px) scale(0.98);
 }
 
 .etape-numero {
@@ -313,14 +361,19 @@ h2 {
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
   box-shadow: var(--ombre);
+  animation: pop 0.3s ease both;
 }
 
 .decouvrir-vignette:hover {
   border-color: var(--couleur-or);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(58, 46, 31, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(58, 46, 31, 0.25);
+}
+
+.decouvrir-vignette:active {
+  transform: scale(0.96);
 }
 
 .decouvrir-vignette img {
@@ -353,7 +406,7 @@ h2 {
 
 /* Détail d'une carte */
 .decouvrir-detail {
-  animation: fadeIn 0.3s ease;
+  animation: slideUp 0.4s ease;
 }
 
 .detail-nav {
@@ -475,22 +528,38 @@ h2 {
   border: 3px solid var(--couleur-bordure);
   border-radius: 10px;
   cursor: pointer;
-  transition: transform 0.15s, border-color 0.15s, background 0.15s;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.3s ease, color 0.3s ease, box-shadow 0.2s ease;
   color: var(--couleur-texte);
+  animation: slideUp 0.3s ease both;
 }
 
-.quiz-option:hover:not(:disabled) { border-color: var(--couleur-or); }
+.quiz-option:nth-child(1) { animation-delay: 0.05s; }
+.quiz-option:nth-child(2) { animation-delay: 0.1s; }
+.quiz-option:nth-child(3) { animation-delay: 0.15s; }
+.quiz-option:nth-child(4) { animation-delay: 0.2s; }
+
+.quiz-option:hover:not(:disabled) {
+  border-color: var(--couleur-or);
+  box-shadow: 0 4px 12px rgba(201, 168, 76, 0.2);
+  transform: translateY(-2px);
+}
+
+.quiz-option:active:not(:disabled) {
+  transform: scale(0.96);
+}
 
 .quiz-option.correct {
   background: #d4edda;
   border-color: var(--couleur-succes);
   color: var(--couleur-succes);
+  animation: pulse 0.5s ease;
 }
 
 .quiz-option.incorrect {
   background: #f8d7da;
   border-color: var(--couleur-erreur);
   color: var(--couleur-erreur);
+  animation: shake 0.4s ease;
 }
 
 .quiz-option:disabled { cursor: default; }
@@ -507,12 +576,14 @@ h2 {
   background: #d4edda;
   color: var(--couleur-succes);
   border: 2px solid var(--couleur-succes);
+  animation: pop 0.4s ease;
 }
 
 .quiz-resultat.echec {
   background: #f8d7da;
   color: var(--couleur-erreur);
   border: 2px solid var(--couleur-erreur);
+  animation: slideUp 0.3s ease;
 }
 
 /* ============================== */
@@ -583,12 +654,13 @@ h2 {
   align-items: center;
   justify-content: center;
   background: rgba(255, 255, 255, 0.5);
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
 }
 
 .frise-slot.drag-over {
   border-color: var(--couleur-or);
   background: rgba(201, 168, 76, 0.15);
+  transform: scale(1.03);
 }
 
 .frise-slot .slot-number {
@@ -653,6 +725,7 @@ h2 {
   border: 3px solid var(--couleur-or);
   border-radius: 16px;
   box-shadow: 0 6px 24px rgba(58, 46, 31, 0.2);
+  animation: pop 0.5s ease;
 }
 
 #fin-message {
@@ -713,7 +786,7 @@ footer {
   max-width: 220px;
   box-shadow: var(--ombre);
   position: relative;
-  animation: fadeIn 0.3s ease;
+  animation: pop 0.4s ease;
 }
 
 .personnage-bulle::before {
